@@ -20,6 +20,12 @@ app.get("/addTwoNumber", (req, res) => {
     res.json({statusCode: 200, message: "Success", result: result});
 })
 
+app.post('/user',(req,res)=>{
+  let user= req.body;
+  console.log(user)
+  res.json({statusCode:200,message:"Success",result:"user has been added"});
+})
+
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server is running on port 3000');
