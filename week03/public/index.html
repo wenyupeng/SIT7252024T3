@@ -37,42 +37,8 @@
         <div class="parallax-container">
             <div class="parallax"><img src="img/background.jpg"></div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m6">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">Week01</span>
-                            <p>learning about HTML, CSS, JavaScript, and Materialize framework.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">good</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">Week02</span>
-                            <p>apply express library to create a server and handle HTTP requests.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">good</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m6">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-content white-text">
-                            <span class="card-title">Week03</span>
-                            <p>combine node.js, express and materialize to create a web application demo.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">good</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container" id="cards">
+            
         </div>
     </main>
     <footer></footer>
@@ -81,6 +47,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
         M.AutoInit();
+    </script>
+    <script>
+        const cards = [
+            { title: "Week01", description: "learning about HTML, CSS, JavaScript, and Materialize framework.", evaluation: "good" },
+            { title: "Week02", description: "apply express library to create a server and handle HTTP requests.", evaluation: "good" },
+            { title: "Week03", description: "combine node.js, express and materialize to create a web application demo.", evaluation: "good" }
+        ]
+
+        let rowEle = document.createElement('div');
+        rowEle.classList.add('row');
+
+        cards.forEach(card=>{
+            let colEle = document.createElement('div');
+            colEle.classList.add('col','s12','m6');
+            rowEle.appendChild(colEle);
+
+            colEle.innerHTML += `
+                <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">${card.title}</span>
+                            <p>${card.description}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">${card.evaluation}</a>
+                        </div>
+                    </div>`
+        });
+
+        let cardsEle = document.getElementById("cards");
+        cardsEle.appendChild(rowEle);
     </script>
 
 </body>
