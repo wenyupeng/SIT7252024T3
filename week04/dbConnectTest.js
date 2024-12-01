@@ -7,7 +7,7 @@ const client = new MongoClient(uri);
 
 async function run() {
   try {
-    // client.connect();
+    client.connect();
     const database = client.db('sit725');
 
     await database.listCollections().toArray((err, collections) => {
@@ -30,7 +30,7 @@ async function run() {
       })
     }
 
-    week04.findOne({ name: "John" }, (err, res) => {
+    let result= await week04.findOne({}, (err, res) => {
       console.log("find one document");
       if (err) throw err;
       console.log(res);
@@ -39,20 +39,22 @@ async function run() {
       }
     });
 
+    console.log(result);
+
     // await week04.insertOne({ name: "John", age: 30 }, (err, res) => {
     //   if (err) throw err;
     //   console.log("1 document inserted");
     // });
 
-    await week04.findOne({ name: "Peter" }, (err, res) => {
-      if (err) throw err;
-      console.log(res);
-      if (res.name === "Peter") {
-        console.log("Found Peter!", res);
-      } else {
-        console.log("Peter not found!");
-      }
-    });
+    // await week04.findOne({ name: "Peter" }, (err, res) => {
+    //   if (err) throw err;
+    //   console.log(res);
+    //   if (res.name === "Peter") {
+    //     console.log("Found Peter!", res);
+    //   } else {
+    //     console.log("Peter not found!");
+    //   }
+    // });
 
     // await week04.insertMany([{ name: "Peter", age: 35 }, { name: "David", age: 25 }], (err, res) => {
     //   if (err) throw err;
