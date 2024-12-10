@@ -7,10 +7,10 @@ const client = new MongoClient(uri);
 
 async function run() {
   try {
-    client.connect();
+    await client.connect();
     const database = client.db('sit725');
 
-    await database.listCollections().toArray((err, collections) => {
+    database.listCollections().toArray((err, collections) => {
       if (err) throw err;
       console.log("Collections:");
       collections.forEach((collection) => {

@@ -16,26 +16,26 @@ async function main() {
  
         const collection = database.collection(collectionName);
  
-        const docs = [
-            { title: "Week01", description: "learning about HTML, CSS, JavaScript, and Materialize framework.", evaluation: "good" },
-            { title: "Week02", description: "apply express library to create a server and handle HTTP requests.", evaluation: "good" },
-            { title: "Week03", description: "combine node.js, express and materialize to create a web application demo.", evaluation: "good" }
-        ];
+        // const docs = [
+        //     { title: "Week01", description: "learning about HTML, CSS, JavaScript, and Materialize framework.", evaluation: "good" },
+        //     { title: "Week02", description: "apply express library to create a server and handle HTTP requests.", evaluation: "good" },
+        //     { title: "Week03", description: "combine node.js, express and materialize to create a web application demo.", evaluation: "good" }
+        // ];
  
-        const result = await collection.insertMany(docs);
+        // const result = await collection.insertMany(docs);
  
-        console.log(`${result.insertedCount} documents created`);
-        Object.keys(result.insertedIds).forEach((id, index) => {
-            console.log(`documents ${index + 1}: ${id}`);
-        });
+        // console.log(`${result.insertedCount} documents created`);
+        // Object.keys(result.insertedIds).forEach((id, index) => {
+        //     console.log(`documents ${index + 1}: ${id}`);
+        // });
  
-        // const query = {}; 
-        // const options = { projection: { _id: 0, name: 1, age: 1, address: 1 } };
-        // const cursor = collection.find(query, options);
+        const query = {}; 
+        const options = { projection: { _id: 0, name: 1, age: 1, address: 1 } };
+        const cursor = collection.find(query, options);
  
-        // const allValues = await cursor.toArray();
-        // console.log("documents:");
-        // console.log(allValues);
+        const allValues = await cursor.toArray();
+        console.log("documents:");
+        console.log(allValues);
     } finally {
         await client.close();
     }
