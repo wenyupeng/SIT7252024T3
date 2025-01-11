@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
     setInterval(() => {
         let index = Math.floor(Math.random() * msgArr.length);
         socket.emit('message', msgArr[index]);
-    }, 2000);
+    }, 100000);
 
 });
 

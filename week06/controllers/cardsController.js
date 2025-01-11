@@ -1,24 +1,26 @@
 let cardsModal = require('../models/card')
 
-const getAllCards = async (req,res)=>{
+const getAllCards = async (req, res) => {
     let cards = await cardsModal.getAllCards();
     // console.log('controller',cards);
-    if(cards){
+    if (cards) {
         res.send(ReturnResult.success(cards));
-    }else{
+    } else {
         res.send(ReturnResult.fail());
     }
 }
 
-const addCard = async(req,res)=>{
+const addCard = async (req, res) => {
     let weekName = req.body.weekName;
-    if(!weekName){
+    if (!weekName) {
         res.send(ReturnResult.fail('invalid weekName'));
+        return;
     }
 
     let card = await cardsModal.getByWeekName(weekName);
-    if(card){
+    if (card) {
         res.send(ReturnResult.fail('card exist'));
+        return;
     }
 
     let addEntity = {
@@ -33,4 +35,33 @@ const addCard = async(req,res)=>{
 
 }
 
-module.exports ={getAllCards,addCard}
+const updateCard = async (req, res) => {
+    let card = req.body;
+    if (!(card._id)) {
+        res.send(ReturnResult.fail('card id must not be empty'));
+        return;
+    }
+
+    let flag = await cardsModal.updateCard(card);
+    if (flag) {
+        res.send(ReturnResult.success("update successfully"));
+    } else {
+        res.send(ReturnResult.fail("update fail"));
+    }
+
+}
+
+const deleteCard = async (req, res) => {
+    let cardId = req.params.cardId;
+    console.log(cardId)
+    if (!cardId) {
+        res.send(ReturnResult.fail('card id must not be empty'));
+        return;
+    }
+
+    await cardsModal.delCardById(cardId);
+    res.send(ReturnResult.success());
+
+}
+
+module.exports = { getAllCards, addCard, updateCard, deleteCard }

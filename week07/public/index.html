@@ -7,6 +7,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <link rel="stylesheet" href="./css/style.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -33,9 +34,10 @@
         </div>
         <div class="container" id="cards">
         </div>
+
         <div class="container">
-            <a class="waves-effect waves-light btn modal-trigger" href="#cardModal"><i
-                    class="material-icons left">cloud</i>ADD MORE CARDS</a>
+            <a class="waves-effect waves-light btn modal-trigger btn-padding" href="#cardModal"><i
+                    class="material-icons left ">cloud</i>ADD MORE CARDS</a>
 
             <!-- Modal Structure -->
             <div id="cardModal" class="modal">
@@ -44,7 +46,7 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <input placeholder="Placeholder" id="weekName" type="text" class="validate">
-                                <label for="first_name">Weeks</label>
+                                <label for="weekName">Weeks</label>
                             </div>
                         </div>
                         <div class="row">
@@ -69,6 +71,47 @@
                         <div class="row">
                             <div class="input-field col s12 center-align">
                                 <a class="waves-effect waves-light btn" id="formSubmit">submit</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <!-- Modal Structure -->
+            <div id="updateModal" class="modal">
+                <div class="modal-content">
+                    <form>
+                        <div class="row">
+                            <input id="u_id" type="text" hidden>
+                            <div class="input-field col s12">
+                                <input placeholder="Placeholder" id="u_weekName" type="text" class="validate">
+                                <label for="u_weekName">Weeks</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="u_description" type="text">
+                                <label for="u_description">description</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <select id="u_evaluation">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="GOOD">GOOD</option>
+                                    <option value="NORMAL">NORMAL</option>
+                                    <option value="BAD">BAD</option>
+                                </select>
+                                <label>EVALUATION</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 center-align">
+                                <a class="waves-effect waves-light btn" id="u_formSubmit">UPDATE</a>
                             </div>
                         </div>
                     </form>
